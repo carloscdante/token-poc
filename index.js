@@ -23,7 +23,7 @@ app.post('/login', (req, res) => {
 		'password': req.body.password
 	};
 
-	axios.post('http://localhost:3030/realm/master/login', qs.stringify(creds), config)
+	axios.post('http://localhost:3000/user/login', qs.stringify(creds), config)
 	.then(response => {
 		const decoded = jwt_decode(response.data['id_token']);
 		const stringifiedDecodedToken = JSON.stringify(decoded);
