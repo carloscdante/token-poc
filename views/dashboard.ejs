@@ -1,6 +1,30 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<h1>Welcome to the dashboard, Logged in <%= tokens['loggedin'] %></h1>
+<h1>Welcome to the dashboard, <%= name %></h1>
+
+<h3>You are in the environment <%= env %></h3>
+
+<h4>Your roles:</h4>
+<ul>
+	<% roles.forEach(role => { %>
+	<li> <%= role %> </li>
+	<% }) %>
+</ul>
+
+<a href="/assign">Assign profile to user</a>
+<br>
+<h6>Execute permission change function (multi-tenancy debug)</h6>
+<form action="/switch" method="POST">
+	<div class="form-group">
+	  <label for="token">Token</label>
+	  <input type="text" class="form-control" name="token" id="token" placeholder="Your Token">
+	</div>
+	<div class="form-group">
+		<label for="refresh_token">Token</label>
+		<input type="text" class="form-control" name="refresh_token" id="refresh_token" placeholder="Your Refresh Token">
+	</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 <h4>You are logged in with this access token: </h4>
 
@@ -10,4 +34,15 @@
 <h6>your id token:
 	<%= decodedToken %>
 </h6>
+<br>
+<br>
+<h6>your refresh token:
+	<%= rf %>
+</h6>
+<br>
+<br>
+<div class="container">
+<embed src="http://localhost:4000/" width="1280" height="720"></embed>
+</div>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
